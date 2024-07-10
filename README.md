@@ -1,13 +1,13 @@
 # Instalation
 
-Clone:
+1. Clone:
 ```
 git clone https://github.com/graziele-fagundes/Procedural-Generation.git
 ```
-Install extension:
+2. Install extension:
 Live Server (ID ritwickdey.LiveServer)
 
-Go Live
+3. Go Live
 
 # Live
 https://graziele-fagundes.github.io/Procedural-Generation/
