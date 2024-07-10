@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Procedural Generation </title>
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        .slider-container {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .slider {
+            width: 150px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input{
+            accent-color: black;
+        }
+        .title {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: rgb(49, 49, 49);
+        }
+        .title h1 {
+            font-size: 20px;
+            margin: 0;
+        }
+        button {
+            padding: 5px 10px;
+            border: none;
+            background-color: rgb(49, 49, 49);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas" style="height: 100vh; width: 100vw;border: 1px black solid;"></canvas>
+
+    <div class="title">
+        <h1>Procedural Generation</h1>
+        <small>Made with 🖤 by Graziele</small>
+    </div>
+
+    <div class="slider-container">
+        <label for="numberOfTrees">Number of Trees:</label>
+        <input type="range" id="numberOfTrees" class="slider" min="0" max="400" value="200">
+        <br><br>
+        <label for="sizeOfTress">Trees Size:</label>
+        <input type="range" id="sizeOfTress" class="slider" min="2" max="4" value="1">
+        <br><br>
+        <label for="numberOfAnimals">Life:</label>
+        <input type="range" id="numberOfAnimals" class="slider" min="0" max="200" value="100">
+        <br><br>
+        <label for="sizeOfForest">Size of Forest:</label>
+        <input type="range" id="sizeOfForest" class="slider" min="50" max="100" value="50">
+        <br><br>
+        <button id="generate">Generate</button>
+        <button id="newSeed">New Seed</button>
+    </div>
+
+    <script src="https://webgl2fundamentals.org/webgl/resources/twgl-full.min.js"></script>
+    <script src="https://webgl2fundamentals.org/webgl/resources/m4.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+
+    <script src="objLoader.js"></script>
+    <script src="objParser.js"></script>
+    <script src="shaders.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
