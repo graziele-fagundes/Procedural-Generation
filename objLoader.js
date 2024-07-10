@@ -146,7 +146,6 @@ function loadGround(gl, program, size) {
   const groundMaterial = {
     diffuse: [1, 1, 1],
     diffuseMap: twgl.createTexture(gl, { src: [155,103,60,255]}),
-    //diffuseMap: twgl.createTexture(gl, { src: 'grass.jpg' }),
     ambient: [1, 1, 1],
     specular: [1, 1, 1],
     shininess: 50,
