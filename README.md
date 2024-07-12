@@ -1,3 +1,7 @@
+# Procedural Forest Generation
+
+This project, developed for my computer graphics course, employs procedural generation to create a 3D forest environment. Trees are positioned randomly based on a deterministic seed, and are rendered using WebGL with .obj models.
+
 # Instalation
 
 1. Clone:
