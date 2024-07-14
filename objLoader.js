@@ -101,11 +101,8 @@ async function loadOBJ(gl, program, file) {
   };
 }
 
-
-
-
 function loadGround(gl, program, size) {
-  const segments = 100; // Number of segments to approximate the circle
+  const segments = 100;
   const radius = size;
 
   const positions = [];
@@ -148,7 +145,7 @@ function loadGround(gl, program, size) {
     diffuseMap: twgl.createTexture(gl, { src: [155,103,60,255]}),
     ambient: [1, 1, 1],
     specular: [1, 1, 1],
-    shininess: 50,
+    shininess: 100,
     opacity: 1,
   };
 

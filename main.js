@@ -13,7 +13,7 @@ async function main() {
     gl.clearColor(174/255, 198/255, 207/255, 1); 
 
 
-    // Variáveis de Câmera
+    // Camera
     let cameraPosition = [0, 20, 200];
     let up = [0, 1, 0];
     let cameraRadius = 100; 
@@ -41,7 +41,7 @@ async function main() {
         cameraPosition[2] = cameraRadius * Math.cos(cameraAngle);
     }
     
-    // Variáveis de geração
+    // Generation variables
     let seed = 666;
 
     let numberOfTrees = document.getElementById('numberOfTrees').value;
@@ -98,8 +98,6 @@ async function main() {
     requestAnimationFrame(render);
 
     function render() {
-        updateCameraPosition();
-        
         // Setup
         twgl.resizeCanvasToDisplaySize(gl.canvas);
         gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
@@ -107,6 +105,8 @@ async function main() {
 
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
         gl.clearColor(174/255, 198/255, 207/255, 1); 
+
+        updateCameraPosition();
 
         // Camera
         const zNear = 1;
@@ -130,7 +130,7 @@ async function main() {
 
         Math.seedrandom(seed);
 
-        // Desenhar chao
+        // Ground
         let u_world = m4.identity();
         u_world = m4.translate(u_world, 0, 0, 0);
         gl.bindVertexArray(ground.vao);
@@ -140,12 +140,10 @@ async function main() {
         twgl.drawBufferInfo(gl, ground.bufferInfo);
 
 
-        // Desenhar as árvores
+        // Trees
         const treePositions = [];
         const minDistanceBetweenTrees = 2;
-        const min = -(sizeOfForest-20);
-        const max = (sizeOfForest-20);
-        const radius = sizeOfForest-5
+        const radius = sizeOfForest-3
 
         for (let i = 0; i < numberOfTrees; ++i) {
             let valid = false;
@@ -194,12 +192,15 @@ async function main() {
             }
         }
 
-        // Desenhar as pedras
+        // Rocks
         for (let i = 0; i < 50; ++i) {
             let x, z;
-            x = Math.random() * (max - min) + min;
-            z = Math.random() * (max - min) + min;
-        
+            const angle = Math.random() * 2 * Math.PI;
+            const r = Math.sqrt(Math.random()) * radius;
+                    
+            x = r * Math.cos(angle);
+            z = r * Math.sin(angle);
+
             let u_world = m4.identity();
             u_world = m4.translate(u_world, ...rock.objOffset);
             u_world = m4.translate(u_world, x, 0.23, z);
@@ -214,11 +215,14 @@ async function main() {
             }
         }
 
-        // Desenhar as flores
+        // Flowers
         for (let i = 0; i < 50; ++i) {
             let x, z;
-            x = Math.random() * (max - min) + min;
-            z = Math.random() * (max - min) + min;
+            const angle = Math.random() * 2 * Math.PI;
+            const r = Math.sqrt(Math.random()) * radius;
+                    
+            x = r * Math.cos(angle);
+            z = r * Math.sin(angle);
         
             let u_world = m4.identity();
             u_world = m4.translate(u_world, ...flowers.objOffset);
@@ -234,11 +238,14 @@ async function main() {
             }
         }
 
-        // Desenhar animais
+        // Animals
         for (let i = 0; i < numberOfAnimals; ++i) {
             let x, y, z, scale;
-            x = Math.random() * (max - min) + min;
-            z = Math.random() * (max - min) + min;
+            const angle = Math.random() * 2 * Math.PI;
+            const r = Math.sqrt(Math.random()) * radius;
+                    
+            x = r * Math.cos(angle);
+            z = r * Math.sin(angle);
             
             let animal 
             if (Math.random() < 0.5) {
@@ -286,6 +293,7 @@ function isPositionValid(newPos, positions, minDistance) {
     }
     return true;
 }
+
 function degToRad(deg) {
     return deg * Math.PI / 180;
 }
