@@ -2,6 +2,10 @@
 
 This project, developed for my computer graphics course, employs procedural generation to create a 3D forest environment. Trees are positioned randomly based on a deterministic seed, and are rendered using WebGL with .obj models. You can view the project live at [this link](https://graziele-fagundes.github.io/Procedural-Generation/).
 
+- Button that generates a new scenario ✔️
+- Parameters that allow you to configure the generation ✔️
+- 7 different objects ✔️
+
 # Cloning the Repository
 To clone this repository, execute the following command in your terminal:
 ```
